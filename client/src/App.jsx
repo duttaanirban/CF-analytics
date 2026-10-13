@@ -16,10 +16,10 @@ function shortSessionId(value) {
 
 function StatCard({ label, value, description }) {
   return (
-    <article className="stat-card">
-      <p className="stat-label">{label}</p>
-      <strong className="stat-value">{value}</strong>
-      <p className="muted">{description}</p>
+    <article className="bg-white p-6 border border-gray-200 rounded-xl">
+      <p className="text-gray-500 text-sm font-medium">{label}</p>
+      <strong className="block text-3xl font-semibold mt-2 mb-2">{value}</strong>
+      <p className="text-gray-500 text-sm">{description}</p>
     </article>
   );
 }
@@ -124,20 +124,20 @@ export default function App() {
 
   return (
     <div className="app-shell">
-      <header className="topbar">
-        <a className="brand" href="/">
-          <span className="brand-mark" aria-hidden="true">
+      <header className="flex justify-between items-center gap-5 px-6 py-4 bg-white border-b border-gray-200">
+        <a className="flex items-center gap-3 text-xl font-extrabold no-underline" href="/">
+          <span className="grid place-items-center w-11 h-11 bg-indigo-600 text-white rounded-lg" aria-hidden="true">
             C
           </span>
           <span>
             CausalLens
-            <small>User behaviour analytics</small>
+            <small className="block mt-1 text-sm font-medium text-gray-500">User behaviour analytics</small>
           </span>
         </a>
 
-        <div className="header-actions">
+        <div className="flex gap-3">
           <a
-            className="button secondary"
+            className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold rounded-lg bg-white border border-gray-200 hover:bg-gray-50"
             href="/demo.html"
             target="_blank"
             rel="noreferrer"
@@ -146,7 +146,7 @@ export default function App() {
           </a>
 
           <button
-            className="button primary"
+            className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-60 disabled:cursor-wait"
             onClick={() => setRefreshKey((value) => value + 1)}
             disabled={sessionsLoading}
           >
@@ -155,11 +155,11 @@ export default function App() {
         </div>
       </header>
 
-      <main className="dashboard">
-        <section className="page-heading">
-          <p className="eyebrow">ANALYTICS OVERVIEW</p>
-          <h1>Understand every interaction.</h1>
-          <p className="muted">
+      <main className="max-w-[1328px] mx-auto p-9">
+        <section className="mb-7">
+          <p className="text-indigo-600 text-xs tracking-wider font-bold">ANALYTICS OVERVIEW</p>
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Understand every interaction.</h1>
+          <p className="text-gray-500 text-sm">
             Explore visitor sessions and follow their journey through your
             website.
           </p>
@@ -171,7 +171,7 @@ export default function App() {
           </div>
         )}
 
-        <section className="stats-grid" aria-label="Analytics totals">
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6" aria-label="Analytics totals">
           <StatCard
             label="Total sessions"
             value={sessionsLoading ? "…" : sessions.length}
